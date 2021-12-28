@@ -5,7 +5,7 @@ import logging
 from flask import Flask
 
 def create_app():
-    app = Flask(__name__, template_folder='/templates', static_folder='/static')
+    app = Flask(__name__, template_folder='templates')
 
     app.config.from_mapping(
         FROM_EMAIL=os.environ.get('FROM_EMAIL'),
