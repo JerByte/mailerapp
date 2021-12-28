@@ -3,12 +3,10 @@ import sys
 import logging
 
 from flask import Flask
-app = Flask(__name__)
-
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
 
 def create_app():
+    app = Flask(__name__)
+
     app.config.from_mapping(
         FROM_EMAIL=os.environ.get('FROM_EMAIL'),
         SENDGRID_KEY=os.environ.get('SENDGRID_API_KEY'),
@@ -26,6 +24,9 @@ def create_app():
     from . import mail
 
     app.register_blueprint(mail.bp)
+    
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
     
     return app
     
