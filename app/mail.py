@@ -12,7 +12,7 @@ bp = Blueprint('mail', __name__, url_prefix='/')
 
 @bp.route('/', methods=['GET'])
 def index():
-    search = request.args.get('search') #request.args son los argumentos que viene a travez de la url
+    search = request.args.get('search') #request.args son los argumentos que vienen a travez de la url
     db, c = get_db()
     if search is None:
         c.execute('SELECT * FROM email')
